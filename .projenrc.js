@@ -36,7 +36,7 @@ const project = new AwsCdkConstructLibrary({
     'ts-node',
   ],
 
-  depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow(),
+  autoApproveUpgrades: true,
   autoApproveOptions: {
     secret: 'YARN_UPGRADE_TOKEN',
   },

@@ -33,6 +33,8 @@ jobs:
         with:
           name: .upgrade.tmp.patch
           path: .upgrade.tmp.patch
+    container:
+      image: jsii/superchain
   pr:
     name: Create Pull Request
     needs: upgrade
@@ -56,7 +58,7 @@ jobs:
         id: create-pr
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.YARN_UPGRADE_TOKEN }}
           commit-message: >-
             chore(deps): upgrade dependencies
 
@@ -73,6 +75,7 @@ jobs:
             *Automatically created by projen via the "upgrade-dependencies" workflow*
           branch: github-actions/upgrade-dependencies
           title: "chore(deps): upgrade dependencies"
+          labels: auto-approve
           body: >-
             Upgrades project dependencies. See details in [workflow run].
 
